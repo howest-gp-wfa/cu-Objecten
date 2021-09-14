@@ -1,42 +1,41 @@
-'use strict';
-window.addEventListener('load', initialize);
+"use strict";
+
+window.addEventListener("load", initialize);
 
 // Globale Variabelen
-  let divStringAnalyse;
-  let txtIngave;
+  let divAnalysis;
+  let inpSentence;
   let divNumberVoorbeeld;
   let divMathVoorbeeld;
   let divObjectVoorbeeld;
 
 // Functies
 function initialize() {
-    // Lokale variabelen
-    let btnStringAnalyseer;
-    
-    // Inlezen DOM-elementen
-    divStringAnalyse = document.getElementById('string-analyse');
-    txtIngave = document.getElementById('ingave');
-    btnStringAnalyseer = document.getElementById('string-analyseer');
-    divNumberVoorbeeld = document.getElementById('number-voorbeeld');
+
+    const btnAnalyseSentence = document.getElementById("analyse-sentence");
+    divAnalysis = document.getElementById("analysis");
+    inpSentence = document.getElementById("sentence");
+
+    divNumberVoorbeeld = document.getElementById("number-voorbeeld");
     divMathVoorbeeld = document.getElementById("math-voorbeeld");
     divObjectVoorbeeld = document.querySelector("#object-voorbeeld");
     
     // Toevoegen Event-Listeners
-    btnStringAnalyseer.addEventListener('click', toonAnalyse);
+    btnAnalyseSentence.addEventListener("click", displayAnalysis);
 
     // Toevoegen van content
-    txtIngave.value = 'Jantje zag eens pruimen hangen, als eieren zo groot...';
+    inpSentence.value = "Jantje zag eens pruimen hangen, als eieren zo groot...";
 
-    // Uivoeren van functies
+    // Uitvoeren van functies
+    displayAnalysis();
     toonNumberVoorbeeld();
     toonMathVoorbeeld();
-    toonAnalyse();
 }
 
 function ToonObjectVoorbeeld() {
     const berg = {"Naam" : "Tourmalet", "Land" : "Frankrijk", "Hoogte" : 2115, "Opgefietst" : false};
     divObjectVoorbeeld.innerHTML = `dot.notatie => berg.Naam => ${berg.Naam} <br/>`;
-    divObjectVoorbeeld.innerHTML += `array-notatie => berg['Opgefietst'] => ${berg['Opgefietst']} <br/>`;
+    divObjectVoorbeeld.innerHTML += `array-notatie => berg["Opgefietst"] => ${berg["Opgefietst"]} <br/>`;
     // Weergave in de console => Object visualiseren
     console.log(berg);
     // Doorlussen van  het object
@@ -55,7 +54,7 @@ function toonMathVoorbeeld() {
   let getal1 = 8;
   let getal2 = 2;
   let getal3 = -2.89;
-  let tekst = '';
+  let tekst = "";
   
   tekst =   `getal1: ${getal1}<br />
             getal2: ${getal2}<br />
@@ -82,27 +81,29 @@ function toonNumberVoorbeeld() {
 }
 
 
-function toonAnalyse() {
-    // Lokale variabelen
-    let tekst = txtIngave.value;
-    let reeks = new Array();
-    let analyse = `De tekst: ${tekst}<br /> 
-              type: <b>  ${typeof (tekst)}  </b><br /> 
-              lengte: <b> ${tekst.length} </b><br />
-              hoofdletters: <b>  ${tekst.toUpperCase()} </b><br />
-              kleine letters: <b> ${tekst.toLowerCase()} </b><br />
-              substring(11,15): <b>  ${tekst.substring(11, 15)} </b><br />
-              substr(11,4): <b>  ${tekst.substr(11, 4)} </b><br />
-              concat: <b> ${tekst.concat(', met nog een stukje erbij.')} </b><br />
-              indexOf(t): <b> ${tekst.indexOf('t')} </b><br />
-              lastIndexOf(t): <b> ${tekst.lastIndexOf("t")} </b><br />
-              charAt(7): <b> ${tekst.charAt(7)} </b><br />
-              replace('t', 'T'): <b> ${tekst.replace("t", "T")} </b><br />`
+function displayAnalysis() {
+
+    const sentence = inpSentence.value;
+    let words = [];
+
+    let analyse = `De zin: ${sentence}<br /> 
+              type: <b>  ${typeof (sentence)}  </b><br /> 
+              lengte: <b> ${sentence.length} </b><br />
+              hoofdletters: <b>  ${sentence.toUpperCase()} </b><br />
+              kleine letters: <b> ${sentence.toLowerCase()} </b><br />
+              substring(11,15): <b>  ${sentence.substring(11, 15)} </b><br />
+              substr(11,4): <b>  ${sentence.substr(11, 4)} </b><br />
+              concat: <b> ${sentence.concat(", met nog een stukje erbij.")} </b><br />
+              indexOf(t): <b> ${sentence.indexOf("t")} </b><br />
+              lastIndexOf(t): <b> ${sentence.lastIndexOf("t")} </b><br />
+              charAt(7): <b> ${sentence.charAt(7)} </b><br />
+              replace("t", "T"): <b> ${sentence.replace("t", "T")} </b><br />`;
               
-              reeks = tekst.split(' ');
+              words = sentence.split(" ");
 
               analyse += `<h3>split:</h3>
-                          Eerste woord: <b> ${reeks[0]} </b><br />
-                          Tweede woord: <b> ${reeks[1]} </b><br />`;
-    divStringAnalyse.innerHTML = `Analyse van de ingegeven tekst<br /><br />${analyse} `;
+                          Eerste woord: <b> ${words[0]} </b><br />
+                          Tweede woord: <b> ${words[1]} </b><br />`;
+
+    divAnalysis.innerHTML = `Analyse van de ingegeven zin<br />${analyse}`;
 }
