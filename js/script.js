@@ -70,7 +70,7 @@ function displayObjectExample() {
 
 function displayDateExample() {
 
-  let date = new Date();
+  const date = new Date();
 
   let message = `Huidige systeemtijd = ${date} <br /> 
     Milliseconden sinds 1 jan 1970 - getTime: ${date.getTime()}<br />
