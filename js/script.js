@@ -136,7 +136,7 @@ function displayStringAnalysis() {
   const sentence = inpSentence.value;
   let words = [];
 
-  let analyse = `De zin: ${sentence}<br /> 
+  let analysis = `De zin: ${sentence}<br /> 
             type: <b>  ${typeof (sentence)}  </b><br /> 
             lengte: <b> ${sentence.length} </b><br />
             hoofdletters: <b>  ${sentence.toUpperCase()} </b><br />
@@ -151,9 +151,9 @@ function displayStringAnalysis() {
             
   words = sentence.split(" ");
 
-  analyse += `<h3>split:</h3>
+  analysis += `<h3>split:</h3>
               Eerste woord: <b> ${words[0]} </b><br />
               Tweede woord: <b> ${words[1]} </b><br />`;
 
-  divAnalysis.innerHTML = `Analyse van de ingegeven zin<br />${analyse}`;
+  divAnalysis.innerHTML = `Analyse van de ingegeven zin<br />${analysis}`;
 }
