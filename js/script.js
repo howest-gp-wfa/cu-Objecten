@@ -149,11 +149,11 @@ function displayStringAnalysis() {
             charAt(7): <b> ${sentence.charAt(7)} </b><br />
             replace("t", "T"): <b> ${sentence.replace("t", "T")} </b><br />`;
             
-            words = sentence.split(" ");
+  words = sentence.split(" ");
 
-            analyse += `<h3>split:</h3>
-                        Eerste woord: <b> ${words[0]} </b><br />
-                        Tweede woord: <b> ${words[1]} </b><br />`;
+  analyse += `<h3>split:</h3>
+              Eerste woord: <b> ${words[0]} </b><br />
+              Tweede woord: <b> ${words[1]} </b><br />`;
 
   divAnalysis.innerHTML = `Analyse van de ingegeven zin<br />${analyse}`;
 }
