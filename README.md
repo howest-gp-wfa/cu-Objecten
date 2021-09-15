@@ -1,2 +1,2 @@
 # cu-Objecten
-Voorbeeldcode cursusmateriaal
+Course piece on chapter objects
